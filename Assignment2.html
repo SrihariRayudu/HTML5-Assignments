@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
+		<style>
+		mark { 
+    background-color: yellow;
+    color: black;
+}
+	
+		</style>
+		<script>
+		$(function() {
+  $('.selectpicker').selectpicker();
+});
+
+function validate(){
+var errordiv = document.getElementById("errordiv");
+var name=document.getElementById("name").value;
+var age=document.getElementById("age").value;
+var email=document.getElementById("email").value;
+var city=document.getElementById("city").value;
+if(name ==''){
+ errordiv.style.display = "block";
+ document.getElementById("errormsg").innerHTML = "Please Enter Name";
+ document.getElementById("name").focus();
+ return;
+ }else{
+  errordiv.style.display = "none";
+ }
+ if(age == ''){
+ errordiv.style.display = "block";
+  document.getElementById("errormsg").innerHTML = "Please Enter Age";
+ document.getElementById("age").focus();
+ return;
+ }else if(age <18) {
+  errordiv.style.display = "block";
+  document.getElementById("errormsg").innerHTML = "Age should be equal or greater than 18";
+  document.getElementById("age").value ='';
+  document.getElementById("age").focus();
+  return;
+ }else {
+  errordiv.style.display = "none";
+  
+ }
+ 
+ var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+ if(email == ''){
+ errordiv.style.display = "block";
+document.getElementById("errormsg").innerHTML = "please enter email address!";
+document.getElementById("email").focus();
+return;
+ }else if(email.match(mailformat))
+{
+  document.getElementById("email").focus();
+   errordiv.style.display = "none";
+
+}
+else
+{
+errordiv.style.display = "block";
+document.getElementById("errormsg").innerHTML = "You have entered an invalid email address!";
+document.getElementById("email").focus();
+return false;
+}
+if(city == '')
+{
+errordiv.style.display = "block";
+document.getElementById("errormsg").innerHTML = "Please Select the city";
+return false;
+}else{
+errordiv.style.display = "none";
+}
+
+if(name != '' && age != '' && email!='' && city !='' ){
+alert("Successfully registered");
+document.getElementById("myForm").reset();
+}
+}
+function myOnLoad(){
+var errordiv = document.getElementById("errordiv");
+ errordiv.style.display = "none";
+}
+		</script>
+
+	</head>
+	<body onload="myOnLoad()">
+	 
+		<div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">Xena Events</h1>
+	               		<hr />
+	               	</div>
+						<marquee behavior="scroll" direction="right"><mark>"Xena Events" is conducting a hot balloon riding event from Feb 28th 2017 onwards for 5 days.</mark></marquee>
+
+	            </div> 
+				<div class="main-login main-center">
+					<form class="form-horizontal" method="post" action="#" id="myForm">
+						<div class="alert alert-danger" role="alert" id="errordiv">
+                         <span id="errormsg">
+                        </div>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="age" class="cols-sm-2 control-label">Age</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-birthday-cake  fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="age" id="age"  placeholder="Enter your Age"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email" />
+								</div>
+							</div>
+						</div>
+
+						
+
+						<div class="form-group">
+							<label for="city" class="cols-sm-2 control-label">City</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-location-arrow " aria-hidden="true"></i></span>
+									<select class="form-control selectpicker required" id="city" data-live-search="true">
+									 <option  id="selected" data-tokens="" value="">Select </option>
+                                     <option data-tokens="Rajkot" value="Rajkot" >Rajkot</option>
+                                     <option data-tokens="Vizag" value="Vizag">Vizag</option>
+                                     <option data-tokens="Bangalore" value="Bangalore" >Bangalore</option>
+                                    </select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button" onclick="validate()">Register</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+	</body>
+</html>

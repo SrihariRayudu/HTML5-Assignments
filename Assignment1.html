@@ -1,0 +1,130 @@
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 1</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+
+</style>
+<script>
+ 
+function myFunction() {
+ alert("dddddddd");
+ var price=document.getElementById("price").value;
+ var ticker=document.getElementById("ticker").value;
+  var tickerdiv = document.getElementById("errordiv");
+ if(ticker ==''){
+ tickerdiv.style.display = "block";
+ document.getElementById("errormsg").innerHTML = "Please Enter ticker";
+ document.getElementById("ticker").focus();
+ return;
+ }else{
+  tickerdiv.style.display = "none";
+ }
+ if(price ==''){
+
+ tickerdiv.style.display = "block";
+ document.getElementById("errormsg").innerHTML = "Please Enter price";
+ document.getElementById("price").focus();
+  return;
+ }else{
+ if(price< 10 || price > 100)
+ {
+
+ tickerdiv.style.display = "block";
+ document.getElementById("errormsg").innerHTML = "Please enter price range between 10 - 100";
+ document.getElementById("price").value='';
+ document.getElementById("price").focus();
+  return;
+  }else{
+  tickerdiv.style.display = "none";
+  }
+ }
+ 
+ if(price%10 != 0){
+ //alert("Please Enter multipules of 10");
+ tickerdiv.style.display = "block";
+ document.getElementById("errormsg").innerHTML = "Please Enter multipules of 10";
+ document.getElementById("price").value='';
+ return;
+ }else{
+ alert("Thank you for purchasing the shares");
+ document.getElementById("ticker").value='';
+ document.getElementById("price").value='';
+ tickerdiv.style.display = "none";
+ }
+}
+
+function myOnLoad(){
+var errordiv = document.getElementById("errordiv");
+ errordiv.style.display = "none";
+}
+</script>
+</head>
+
+<body onload="myOnLoad()">
+<div class="table-responsive" style=" margin-top: 80px;margin-left: 437px;">
+  <table class="table table-sm table-hover table-dark table-bordered table-striped " style="width:33% !important;">
+   <thead>
+    <tr>
+      
+      <th scope="col">TICKER</th>
+      <th scope="col">PRICE</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+     <td >WIPRO</td>
+      <td >298.45</td>
+      
+    </tr>
+    <tr>
+      
+      <td >INFY</td>
+      <td >949.95</td>
+     
+    </tr>
+    <tr>
+     
+       <td >TCS</td>
+      <td >2713.70</td>
+    </tr>
+	<tr>
+      <td >TECHM</td>
+      <td >485.85</td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+<h1 align='center'>Stock Trading</h1>
+<div class="alert alert-danger" role="alert" id="errordiv">
+  <span id="errormsg">
+</div>
+<div class="table-responsive" >
+<table class="table table-sm table-hover table-dark table-bordered table-striped " >
+<tbody>
+   <tr>
+      <td >Ticker</td>
+      <td ><input type='text' class="form-control" placeholder="Ticker" id="ticker"> <span id="tickermsg"></span></td> 
+    </tr>
+	 <tr>
+      <td >Price</td>
+      <td><input type='text' class="form-control" placeholder="Price" id="price"> <span id="pricemsg"></span></td>
+    </tr>
+	 <tr>
+      <td ><button onclick="myFunction()">Submit</button> </td>
+     <td ></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html>
